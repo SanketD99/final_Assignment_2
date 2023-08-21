@@ -1,0 +1,70 @@
+<div class="main">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 my-5">
+        <div class="jumbotron">
+          <h2>Solution</h2>
+          <hr>
+          <h3>Current Available Denomination in Machine</h3>
+          <table class="table table-striped" id="tableData">
+            <tbody>
+              <tr>
+                <th>2000</th>
+                <td data-ad="2000">{{Count_2000ToShow}}</td>
+                <td>|</td>
+                <td style="width:200px;"><input data-ad="2000" [(ngModel)]="count_2000" placeholder="0"></td>
+              </tr>
+              <tr>
+                <th>500</th>
+                <td data-ad="500">{{Count_500ToShow}}</td>
+                <td>|</td>
+                <td><input data-ad="500" [(ngModel)]="count_500" placeholder="0"></td>
+
+              </tr>
+              <tr>
+                <th>200</th>
+                <td data-ad="200">{{Count_200ToShow}}</td>
+                <td>|</td>
+                <td><input data-ad="200" [(ngModel)]="count_200" placeholder="0"></td>
+
+              </tr>
+              <tr>
+                <th>100</th>
+                <td data-ad="100">{{Count_100ToShow}}</td>
+                <td>|</td>
+                <td><input data-ad="100" [(ngModel)]="count_100" placeholder="0"></td>
+
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td id="td-total">{{totalAmount}}</td>
+                <td>|</td>
+                <td><button (click)="depositAmount()" class="btn btn-primary" id="btn-deposit">Deposit</button></td>
+              </tr>
+
+            </tbody>
+          </table>
+          <hr>
+          <div class="input-group">
+            <input id="inp-withdraw" type="text" class="form-control" placeholder="Enter amount for withdrawal"
+              [(ngModel)]="withdrawCash">
+            <span class="input-group-btn">
+              <button id="btn-withdraw" class="btn btn-success" type="button"
+                (click)="withdrawAmount()">Withdraw!</button>
+            </span>
+          </div>
+          <hr>
+          <h3>Log</h3>
+
+          <div id="log-holder">
+            <div class="alert alert-info" *ngFor="let log of maintainLogArray">{{log.action}} 2000:{{log.count_2000}}
+              500:{{log.count_500}} 200:{{log.count_200}} 100:{{log.count_100}} <br><small>{{log.exactTime}}</small>
+            </div>
+            <div class="alert alert-danger" *ngIf="insufficientFund"> Cannot Withdraw
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
